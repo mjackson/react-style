@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import { style } from '@threepointone/react-css'
 
-// TODO: Is there a standard list of these somewhere? I just ripped
+// TODO: Is there a canonical list of these somewhere? I copped
 // these off document.body.style in Chrome...
 const StyleProperties = {
   alignContent: true,
@@ -295,6 +295,9 @@ export class Style extends React.Component {
   }
 }
 
+export const Inline = (props) =>
+  <Style {...props} display="inline"/>
+
 export const Block = (props) =>
   <Style {...props} display="block"/>
 
@@ -303,6 +306,18 @@ export const InlineBlock = (props) =>
 
 export const Flex = (props) =>
   <Style {...props} display="flex"/>
+
+export const InlineFlex = (props) =>
+  <Style {...props} display="inline-flex"/>
+
+export const Table = (props) =>
+  <Style {...props} display="table"/>
+
+export const TableRow = (props) =>
+  <Style {...props} display="table-row"/>
+
+export const TableCell = (props) =>
+  <Style {...props} display="table-cell"/>
 
 export class Media extends React.Component {
   static propTypes = {
