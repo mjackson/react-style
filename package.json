@@ -1,0 +1,24 @@
+{
+  "name": "react-style",
+  "version": "0.0.1",
+  "description": "A React component layer for @threepointone/react-css",
+  "main": "lib",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mjackson/react-style.git"
+  },
+  "keywords": [
+    "react",
+    "style",
+    "css"
+  ],
+  "author": "Michael Jackson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mjackson/react-style/issues"
+  },
+  "homepage": "https://github.com/mjackson/react-style#readme"
+}
