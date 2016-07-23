@@ -304,6 +304,12 @@ export const InlineBlock = (props) =>
 export const Flex = (props) =>
   <Style {...props} display="flex"/>
 
+export const Button = (props) =>
+  <Style {...props} component="button"/>
+  
+export const A = (props) =>
+  <Style {...props} component="a"/>
+
 export class Media extends React.Component {
   static propTypes = {
     query: PropTypes.string
