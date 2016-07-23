@@ -1,6 +1,6 @@
 {
-  "name": "react-style",
-  "version": "0.0.1",
+  "name": "@mjackson/react-style",
+  "version": "0.1.0",
   "description": "A React component layer for @threepointone/react-css",
   "repository": "mjackson/react-style",
   "author": "Michael Jackson",
