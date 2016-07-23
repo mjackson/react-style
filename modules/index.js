@@ -1,6 +1,20 @@
 import React, { PropTypes } from 'react'
 import { style } from '@threepointone/react-css'
 
+// TODO: Call react-css' remove function...
+const remove = (stuff) =>
+  console.log(`Removing stuff: ${JSON.stringify(stuff)}`)
+
+const isEmptyObject = (object) =>
+  Object.keys(object).length === 0
+
+const shallowCompare = (a, b) => {
+  const aKeys = Object.keys(a)
+  const bKeys = Object.keys(b)
+
+  return aKeys.length === bKeys.length && aKeys.every(key => a[key] == b[key])
+}
+
 // TODO: Is there a canonical list of these somewhere? I copped
 // these off document.body.style in Chrome...
 const StyleProperties = {
@@ -261,35 +275,69 @@ export class Style extends React.Component {
     component: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.func
-    ]),
-    mediaQuery: PropTypes.string
+    ])
   }
 
   static defaultProps = {
     component: 'div'
   }
 
-  render() {
-    const { component, mediaQuery, ...rest } = this.props
-
+  static splitProps(mixedProps) {
     const props = {}
     const styleProps = {}
-    let hasStyleProps = false
 
-    Object.keys(rest).forEach(key => {
+    Object.keys(mixedProps).forEach(key => {
       if (StyleProperties[key]) {
-        styleProps[key] = rest[key]
-        hasStyleProps = true
+        styleProps[key] = mixedProps[key]
       } else {
-        props[key] = rest[key]
+        props[key] = mixedProps[key]
       }
     })
 
-    if (hasStyleProps)
-      Object.assign(props, style(styleProps))
+    return styleProps
+  }
 
-    if (mediaQuery)
-      Object.assign(props, media(mediaQuery))
+  static getStyleProps(props) {
+    return Style.splitProps(props).styleProps
+  }
+
+  state = {
+    style: null
+  }
+
+  updateStyle(styleProps) {
+    this.setState({
+      style: isEmptyObject(styleProps) ? null : style(styleProps)
+    })
+  }
+
+  componentWillMount() {
+    this.updateStyle(Style.getStyleProps(this.props))
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const prevStyleProps = Style.getStyleProps(this.props)
+    const nextStyleProps = Style.getStyleProps(nextProps)
+
+    if (!shallowCompare(prevStyleProps, nextStyleProps)) {
+      if (this.state.style)
+        remove(this.state.style)
+
+      this.updateStyle(nextStyleProps)
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.state.style)
+      remove(this.state.style)
+  }
+
+  render() {
+    const { component, ...props } = Style.splitProps(this.props).props
+    const { style } = this.state
+
+    if (style)
+      Object.assign(props, style)
 
     return React.createElement(component, props)
   }
@@ -318,14 +366,3 @@ export const TableRow = (props) =>
 
 export const TableCell = (props) =>
   <Style {...props} display="table-cell"/>
-
-export class Media extends React.Component {
-  static propTypes = {
-    query: PropTypes.string
-  }
-
-  render() {
-    const { query, ...props } = this.props
-    return <Style {...props} mediaQuery={query}/>
-  }
-}
