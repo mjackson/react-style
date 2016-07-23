@@ -294,7 +294,10 @@ export class Style extends React.Component {
       }
     })
 
-    return styleProps
+    return {
+      props,
+      styleProps
+    }
   }
 
   static getStyleProps(props) {
