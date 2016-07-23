@@ -2,23 +2,29 @@
   "name": "react-style",
   "version": "0.0.1",
   "description": "A React component layer for @threepointone/react-css",
+  "repository": "mjackson/react-style",
+  "author": "Michael Jackson",
+  "license": "MIT",
   "main": "lib",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rimraf lib && babel ./modules -d lib"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mjackson/react-style.git"
+  "peerDependencies": {
+    "@threepointone/react-css": "1.x",
+    "react": "15.x"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.11.4",
+    "babel-plugin-transform-object-assign": "^6.8.0",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-es2015-loose": "^7.0.0",
+    "babel-preset-react": "^6.11.1",
+    "babel-preset-stage-1": "^6.5.0",
+    "rimraf": "^2.5.4"
   },
   "keywords": [
     "react",
     "style",
     "css"
-  ],
-  "author": "Michael Jackson",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/mjackson/react-style/issues"
-  },
-  "homepage": "https://github.com/mjackson/react-style#readme"
+  ]
 }
