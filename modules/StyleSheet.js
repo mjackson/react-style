@@ -17,7 +17,8 @@ class StyleSheet extends React.Component {
   static propTypes = {
     id: PropTypes.string,
     dataAttr: PropTypes.string,
-    document: PropTypes.object
+    document: PropTypes.object,
+    children: PropTypes.node
   }
 
   static defaultProps = {
