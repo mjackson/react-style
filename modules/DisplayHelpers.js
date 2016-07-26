@@ -10,12 +10,6 @@ export const Block = (props) =>
 export const InlineBlock = (props) =>
   <Style {...props} display="inline-block"/>
 
-export const Flex = (props) =>
-  <Style {...props} display="flex"/>
-
-export const InlineFlex = (props) =>
-  <Style {...props} display="inline-flex"/>
-
 export const Table = (props) =>
   <Style {...props} display="table"/>
 
@@ -25,3 +19,8 @@ export const TableRow = (props) =>
 export const TableCell = (props) =>
   <Style {...props} display="table-cell"/>
 
+export const Flex = (props) =>
+  <Style {...props} display="flex"/>
+
+export const InlineFlex = (props) =>
+  <Style {...props} display="inline-flex"/>

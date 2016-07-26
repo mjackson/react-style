@@ -97,7 +97,7 @@ class StyleSheet extends React.Component {
     head.appendChild(this.node)
 
     for (let i = 0; i < document.styleSheets.length; ++i) {
-      const styleSheet = document.styleSheets[1]
+      const styleSheet = document.styleSheets[i]
 
       if (styleSheet.ownerNode === this.node) {
         this.styleSheet = styleSheet
