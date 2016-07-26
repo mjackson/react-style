@@ -1,7 +1,7 @@
 {
   "name": "@mjackson/react-style",
   "version": "0.1.0",
-  "description": "A React component layer for @threepointone/react-css",
+  "description": "Declarative styling for React apps",
   "repository": "mjackson/react-style",
   "author": "Michael Jackson",
   "license": "MIT",
@@ -14,8 +14,10 @@
     "build": "node ./scripts/build.js",
     "prepublish": "node ./scripts/build.js"
   },
+  "dependencies": {
+    "warning": "^3.0.0"
+  },
   "peerDependencies": {
-    "@threepointone/react-css": "1.x",
     "react": "15.x"
   },
   "devDependencies": {
