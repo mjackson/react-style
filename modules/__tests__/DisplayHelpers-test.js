@@ -1,11 +1,7 @@
-import expect from 'expect'
 import React from 'react'
-import { render } from 'react-dom'
-import StyleSheet from '../StyleSheet'
+import expect from 'expect'
+import { renderWithStyleSheet } from './helpers'
 import { Inline, Block, InlineBlock, Table, TableRow, TableCell, Flex, InlineFlex } from '../DisplayHelpers'
-
-const renderWithStyleSheet = (element, node, callback) =>
-  render(<StyleSheet children={element}/>, node, callback)
 
 const childStyle = (node) =>
   window.getComputedStyle(node.firstChild)
