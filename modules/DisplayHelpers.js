@@ -21,6 +21,3 @@ export const TableCell = (props) =>
 
 export const Flex = (props) =>
   <Style {...props} display="flex"/>
-
-export const InlineFlex = (props) =>
-  <Style {...props} display="inline-flex"/>

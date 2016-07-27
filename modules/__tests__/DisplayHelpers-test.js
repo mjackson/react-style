@@ -1,7 +1,7 @@
 import React from 'react'
 import expect from 'expect'
 import { renderWithStyleSheet } from './helpers'
-import { Inline, Block, InlineBlock, Table, TableRow, TableCell, Flex, InlineFlex } from '../DisplayHelpers'
+import { Inline, Block, InlineBlock, Table, TableRow, TableCell, Flex } from '../DisplayHelpers'
 
 const childStyle = (node) =>
   window.getComputedStyle(node.firstChild)
@@ -68,15 +68,7 @@ describe('DisplayHelpers', () => {
   describe('<Flex>', () => {
     it('uses display:flex', () => {
       renderWithStyleSheet(<Flex/>, node, () => {
-        expect(childStyle(node).display).toEqual('flex')
-      })
-    })
-  })
-
-  describe('<InlineFlex>', () => {
-    it('uses display:inline-flex', () => {
-      renderWithStyleSheet(<InlineFlex/>, node, () => {
-        expect(childStyle(node).display).toEqual('inline-flex')
+        expect(childStyle(node).display).toMatch(/flex/)
       })
     })
   })
