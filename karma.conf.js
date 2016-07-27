@@ -24,13 +24,6 @@ module.exports = (config) => {
       browser: 'safari',
       browser_version: '9.0'
     },
-    BS_MobileSafari8: {
-      base: 'BrowserStack',
-      os: 'ios',
-      os_version: '8.3',
-      browser: 'iphone',
-      real_mobile: false
-    },
     BS_MobileSafari9: {
       base: 'BrowserStack',
       os: 'ios',
