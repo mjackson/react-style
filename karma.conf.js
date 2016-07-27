@@ -1,7 +1,5 @@
-const path = require('path')
 const webpack = require('webpack')
-
-const projectName = 'react-style'
+const projectName = require('./package').name
 
 module.exports = (config) => {
   const customLaunchers = {
