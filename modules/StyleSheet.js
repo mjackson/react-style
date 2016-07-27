@@ -1,11 +1,21 @@
 import warning from 'warning'
 import React, { PropTypes } from 'react'
-import { createMarkupForStyles } from 'react/lib/CSSPropertyOperations'
 import prefixStyles from 'inline-style-prefixer/static'
 import { hex_md5 as md5 } from './md5'
 import {
   styleSheet as styleSheetType
 } from './PropTypes'
+
+const stringifyProperty = (name, value) =>
+  name + ':' + (Array.isArray(value) ? value.join(';' + name + ':') : value)
+
+const stringifyStyles = (styles) =>
+  Object.keys(styles)
+    .reduce((memo, key) => {
+      memo.push(stringifyProperty(key, styles[key]))
+      return memo
+    }, [])
+    .join(';')
 
 /**
  * A <StyleSheet> provides context to <Style> components so they can
@@ -50,7 +60,7 @@ class StyleSheet extends React.Component {
   }
 
   createRule = (styles) => {
-    const css = createMarkupForStyles(prefixStyles(styles))
+    const css = stringifyStyles(prefixStyles(styles))
     const key = md5(css).substring(0, 8)
     const prop = `data-${this.props.dataAttr}-${key}`
     const rule = `[${prop}]{${css}}`
