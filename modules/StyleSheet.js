@@ -1,8 +1,8 @@
 import warning from 'warning'
 import React, { PropTypes } from 'react'
 import { createMarkupForStyles } from 'react/lib/CSSPropertyOperations'
+import prefixStyles from 'inline-style-prefixer/static'
 import { hex_md5 as md5 } from './md5'
-import autoprefix from './autoprefix'
 import {
   styleSheet as styleSheetType
 } from './PropTypes'
@@ -50,7 +50,7 @@ class StyleSheet extends React.Component {
   }
 
   createRule = (styles) => {
-    const css = createMarkupForStyles(autoprefix(styles))
+    const css = createMarkupForStyles(prefixStyles(styles))
     const key = md5(css).substring(0, 8)
     const prop = `data-${this.props.dataAttr}-${key}`
     const rule = `[${prop}]{${css}}`
